@@ -143,11 +143,11 @@ public class DataGeneratorFactory {
       Optional<RelationConfig> rconfig = config.findRelationConfig(relation.getSubColumns());
 
       if (rconfig.isEmpty()) {
-        return new SequentialInteritanceRowDataStore(relation.getSubColumns().get(0));
+        return new SequentialInteritanceRowDataStore(mainColumn);
       }
 
       return new MultiplicityRowDataStore(
-          relation.getSubColumns().get(0),
+          mainColumn,
           rconfig.get().getMultiplicities(),
           config.getRowCount(relation.getSubTable()));
     }

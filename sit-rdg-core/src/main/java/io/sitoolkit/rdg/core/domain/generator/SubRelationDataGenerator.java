@@ -34,7 +34,8 @@ public class SubRelationDataGenerator extends RelationDataGenerator {
       storedData = RowDataGenerator.applyWithUniqueCheck(function, uniques, getUniqueDataStore());
     }
 
-    rowData.putAll(storedData);
+    RowData subData = RowDataGenerator.replicateForSub(storedData, getRelation());
+    rowData.putAll(subData);
     log.trace("Get and add data from store: {}", storedData);
   }
 

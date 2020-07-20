@@ -21,11 +21,15 @@ public class MainRelationDataGenerator extends RelationDataGenerator {
     RowData existingData = rowData.filter(getRelation().getMainColumns());
 
     if (existingData.size() == getRelation().getMainColumns().size()) {
-      RowData subData = RowDataGenerator.replicateForSub(existingData, getRelation());
+      // RowData subData = RowDataGenerator.replicateForSub(existingData, getRelation());
 
-      log.trace("Existing main data: {} is passed as sub data: {}", existingData, subData);
+      // log.trace("Existing main data: {} is passed as sub data: {}", existingData, subData);
 
-      getDataStoreForSubRel().add(subData);
+      // getDataStoreForSubRel().add(subData);
+
+      log.trace("Existing main data: {} is passed as sub data", existingData);
+
+      getDataStoreForSubRel().add(existingData);
 
       return;
     }
@@ -46,11 +50,15 @@ public class MainRelationDataGenerator extends RelationDataGenerator {
     }
 
     rowData.putAll(mainData);
-    RowData subData = RowDataGenerator.replicateForSub(mainData, getRelation());
+    // RowData subData = RowDataGenerator.replicateForSub(mainData, getRelation());
 
-    log.trace("Generated main data: {} is passed as sub data: {}", mainData, subData);
+    // log.trace("Generated main data: {} is passed as sub data: {}", mainData, subData);
 
-    getDataStoreForSubRel().add(subData);
+    // getDataStoreForSubRel().add(subData);
+
+    log.trace("Generated main data: {} is passed as sub data", mainData);
+
+    getDataStoreForSubRel().add(mainData);
   }
 
   @Override
